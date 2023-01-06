@@ -1,0 +1,85 @@
+<!-- Created by Prabhat☔ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Type Anything & Save</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <style type="text/css">
+          /*@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');*/
+          body {
+              background-color: black ;
+              color:#ff0061;
+              font-family:Montserrat,serif;
+              padding-left:50px;
+              padding-right:50px;
+
+          }
+          .rem {
+              background-color:#252525;
+              border-color:black;
+              border-radius:50%;
+              font-weight:bold;
+          }
+
+          #addnew{
+              background-color:#252525;
+              font-family:Montserrat,serif;
+              color:white;
+              height:30px;
+              width:225px;
+              font-size:large;
+              padding-left:20px;
+              border-radius:10px;
+              border:none;
+              outline:none;
+          }
+
+          #add{
+              border-radius: 75%;
+              font-weight:bold;
+              color:white;
+              background-color:black;
+              outline:none;
+          }
+
+          .del {
+             display:none; 
+             font-size: 20px;
+          }
+        </style>
+    </head>
+    <body align="center">
+     <h1 class="head"><u>My To-do list</u></h1> 
+      <input type="text" id ="addnew"
+       placeholder="Type something..." autofocus="autofocus"/>
+       <br>
+        <button id="add">Add</button>
+        <ul align ="left" id="mylist">
+        </ul>
+        <h1 class="del">Deleted ☑ </h1>
+        <ul align ="left" id ="del"></ul>
+    </body>
+</html>
+<script type="text/javascript">
+  $(function(){
+$("#add").on("click",function(){
+        var val=$("input").val();
+        if (val !== '') {
+            var e = $("<li></li>").text(val);
+            $(e).append("<button         class='rem'>✖</button>");
+            $("#mylist").append(e);
+            $("input").val("");
+            $(".rem").on("click", function() {
+              
+        var d = $(this).parent().remove();
+            $(".del").slideDown(750);
+ });
+      }
+        
+        });
+            $(".del").click(function() {
+            $(".del").toggle(750);
+    });
+});
+
+</script>
